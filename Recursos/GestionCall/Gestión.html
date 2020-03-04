@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style>.pac-container{background-color:#fff;position:absolute!important;z-index:1000;border-radius:2px;border-top:1px solid #d9d9d9;font-family:Arial,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,0.3);-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.pac-logo:after{content:"";padding:1px 1px 1px 0;height:18px;box-sizing:border-box;text-align:right;display:block;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);background-position:right;background-repeat:no-repeat;background-size:120px 14px}.hdpi.pac-logo:after{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png)}.pac-item{cursor:default;padding:0 4px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;line-height:30px;text-align:left;border-top:1px solid #e6e6e6;font-size:11px;color:#999}.pac-item:hover{background-color:#fafafa}.pac-item-selected,.pac-item-selected:hover{background-color:#ebf2fe}.pac-matched{font-weight:700}.pac-item-query{font-size:13px;padding-right:3px;color:#000}.pac-icon{width:15px;height:20px;margin-right:7px;margin-top:6px;display:inline-block;vertical-align:top;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);background-size:34px}.hdpi .pac-icon{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons_hdpi.png)}.pac-icon-search{background-position:-1px -1px}.pac-item-selected .pac-icon-search{background-position:-18px -1px}.pac-icon-marker{background-position:-1px -161px}.pac-item-selected .pac-icon-marker{background-position:-18px -161px}.pac-placeholder{color:gray}
+</style>
+    <title>Gestión</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="Gesti%C3%B3n_files/bootstrap.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="Gesti%C3%B3n_files/daterangepicker.css">
+    <link rel="stylesheet" href="Gesti%C3%B3n_files/font-awesome.css">
+
+    <style>
+
+        body{
+            height: 100vh;
+        }
+        
+        #menu{
+            background: rgb(2,0,36);
+            background: linear-gradient( rgba(96,17,17,1) 0%, rgba(255,0,0,1) 57%, rgba(0,0,0,1)  100%);
+            
+            border-right: 2px solid darkslategray;
+
+        }
+        .form-row{
+            margin-top: 20px;
+        }
+        #btn_exportar{
+            float: right;
+        }
+        #logo{
+            height: 25vh;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        #menu .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+            color: red;
+            background-color: white;
+        }
+        #menu a {
+            color: white;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        #menu a:hover{
+            color: white;
+            font-weight: bold;
+        }
+        #changepass{
+            padding-left: 20%;
+            margin-top: 5%;
+        }
+        #changepasscard{
+            width: 75%;
+        }
+    </style>
+  <script type="text/javascript" charset="UTF-8" src="Gesti%C3%B3n_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="Gesti%C3%B3n_files/util.js"></script><script type="text/javascript" charset="UTF-8" src="Gesti%C3%B3n_files/controls.js"></script><script type="text/javascript" charset="UTF-8" src="Gesti%C3%B3n_files/places_impl.js"></script></head>
+  <body>
+      <div class="container-fluid h-100 " id="cont_main">
+          <div class="row h-100">
+              <div class="col-2  " id="menu">
+              <img src="Gesti%C3%B3n_files/LOGOCLARO.png" id="logo">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Registro</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Reporte</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Consulta</a>
+                    <a class="nav-link disabled" id="v-pills-messages-tab" data-toggle="pill" href="#ruta" role="tab" aria-controls="v-pills-messages" aria-selected="false">En ruta</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#cambiarpassword" role="tab" aria-controls="v-pills-messages" aria-selected="false">Cambiar contraseña</a>
+                    <a class="nav-link" id="v-pills-settings-tab" href="http://190.196.189.178:8083/logout.php" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cerrar Sesión</a>                  
+                </div>
+              </div>
+              <div class="col-10" id="main">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="container" id="registro_container">
+                                <div class="row">
+                                    <h4>Registro de venta</h4>
+                                </div>
+                                <div class="row" id="registro_row">
+                                    <!--<form method="POST" action="registrocall.php">-->
+                                    <form id="registro" enctype="multipart/form-data" method="POST" action="registrocall.php">
+                                        <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <label for="tipo_venta">Tipo de venta</label>
+                                                    <select id="tipo_venta" name="tipo_venta" class="form-control form-control-sm" required="">
+                                                        
+                                                        <option selected="selected" value="one">ONE</option>
+                                                        <option value="front">FRONT</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="numero_caso">Número de caso</label>
+                                                    <input type="text" id="numero_caso" name="numero_caso" class="form-control form-control-sm" onkeyup="this.value = this.value.toUpperCase();" required="">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="numero_orden">Número de orden</label>
+                                                    <input type="text" id="numero_orden" name="numero_orden" class="form-control form-control-sm" required="">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="fecha_solicitud">Fecha de solicitud</label>
+                                                    <input type="date" id="fecha_solicitud" name="fecha_solicitud" class="form-control form-control-sm" required="">
+                                                </div>    
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-3">
+                                                     <label for="estado">Campaña</label>
+                                                    <select id="estado" name="campaña" class="form-control form-control-sm" required="">
+                                                        <!--Cambiar a valores reales-->
+                                                        <option value="" selected="selected">Seleccione </option>
+                                                        <option value="outbound">Outbound</option>
+                                                        <option value="inbound">Inbound</option>
+                                                        <option value="web">Web</option>
+                                                        <option value="2da Línea">2da Linea</option>
+                                                        <option value="Pyme">Pyme</option>
+                                                        <option value="Cross">Cross</option>
+                                                        <option value="C2C">C2C</option>
+                                                        <option value="Planes Bajos">Planes Bajos</option>
+                                                        <option value="RRSS">RRSS</option>
+                                                        <option value="Pyme INB">Pyme INB</option>
+                                                        <option value="Pyme WEB">Pyme WEB</option>
+                                                        <option value="Pyme C2C">Pyme C2C</option>
+                                                        <option value="Pyme OUT">Pyme OUT</option>
+                                                        <option value="Pyme CHAT">Pyme CHAT</option>
+                                                        <option value="2da Linea OUT">2da Linea OUT</option>
+                                                        <option value="GEA NAP INBOUND">GEA NAP INBOUND</option>
+                                                        <option value="C2C Cross INBOUND">C2C Cross INBOUND</option>
+                                                        <option value="Migración Out">Migracion Out</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-2">
+                                                    <label for="rut">Rut</label>
+                                                    <input type="text" name="rut" id="rut" class="form-control form-control-sm" pattern="^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$" maxlength="8" required="">
+                                                </div>
+                                                <div class="col-1">
+                                                    <label for="dv">DV</label>
+                                                    <input type="text" name="dv" id="dv" class="form-control form-control-sm" maxlength="1" required="">
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="apellidos">Apellidos</label>
+                                                    <input type="text" name="apellidos" id="apellidos" class="form-control form-control-sm" required="">
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="nombres">Nombres</label>
+                                                    <input type="text" name="nombres" id="nombres" class="form-control form-control-sm" required="">
+                                                </div>
+                                                   
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <label for="pcs">PCS de contacto</label>
+                                                    <input type="text" name="pcs" id="pcs" class="form-control form-control-sm" pattern="^(569)([0-9]{8})$" maxlength="11" required="">
+                                                    <small id="pcslHelp" class="form-text text-muted">El número telefónico de contacto del cliente.</small>
+
+                                                </div>
+                                                <div class="col">
+                                                    <label for="producto_ofrecido">Producto ofrecido</label>
+                                                    <select name="producto_ofrecido" id="producto_ofrecido" class="form-control form-control-sm" required="">
+                                                        <!--Agregar valores reales-->
+                                                        <option value="" selected="selected"> Seleccione </option>
+                                                        <option value="Migración">Migración</option>
+                                                        <option value="Primera Línea">Primera Línea</option>
+                                                        <option value="Segunda Línea">Segunda Línea</option>
+                                                        <option value="Portabilidad Pre a Post">Portabilidad Pre a Post</option>
+                                                        <option value="Portabilidad Post Pago">Portabilidad Post Pago</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col">
+                                                   <label for="pcs_migrar">PCS a portar</label>
+                                                   <input type="text" name="pcs_migrar" id="pcs_migrar" class="form-control form-control-sm" pattern="^(569)([0-9]{8})$" maxlength="11" required="">
+                                                   <small id="pcsportarlHelp" class="form-text text-muted">El número telefónico a portar del cliente.</small>
+
+                                                </div>
+                                                <div class="col">
+                                                    <label for="plan_ofrecido">Plan ofrecido</label>
+                                                    <select name="plan_ofrecido" id="plan_ofrecido" class="form-control form-control-sm" required="">
+                                                        <!--Agregar valores reales-->
+                                                        <option value="" selected="selected"> Seleccione</option>
+                                                        <option value="Bam 6 GB limitado">Bam 6 GB limitado</option>
+                                                        <option value="Bam 10 GB limitado">Bam 10 GB limitado</option>
+                                                        <option value="Bam 30 GB limitado">Bam 30 GB limitado</option>
+                                                        <option value="06 2018 PLAN SUMAME NORMAL ADICIONAL EP">06 2018 PLAN SUMAME NORMAL ADICIONAL EP</option>
+                                                        <option value="BAM 50 GB CE Promo">BAM 50 GB CE Promo</option>
+                                                        <option value="BAM 100 GB CE Promo">BAM 100 GB CE Promo</option>
+                                                        <option value="12 2018 VOZ 400 CE EP">12 2018 VOZ 400 CE EP</option>
+                                                        <option value="12 2018 VOZ LIBRE POSTPAGO EP 100 DESTINOS">12 2018 VOZ LIBRE POSTPAGO EP 100 DESTINOS</option>
+                                                        <option value="12 2018 VOZ LIBRE POSTPAGO EP 300 DESTINOS">12 2018 VOZ LIBRE POSTPAGO EP 300 DESTINOS</option>
+                                                        <option value="12 2018-ARR-MAX L">12 2018-ARR-MAX L</option>
+                                                        <option value="08 2019 - EP - PLAN CLARO GAMER">08 2019 - EP - PLAN CLARO GAMER</option>
+                                                        <option value="08 2019 - ARR - PLAN CLARO GAMER">08 2019 - ARR - PLAN CLARO GAMER</option>
+                                                        <option value="08 2019-ARR-MAX Y">08 2019-ARR-MAX Y</option>
+                                                        <option value="08 2019-EP-MAX M">08 2019-EP-MAX M</option>
+                                                        <option value="08 2019-EP-MAX X">08 2019-EP-MAX X</option>
+                                                        <option value="08 2019-EP-MAX L">08 2019-EP-MAX L</option>
+                                                        <option value="08 2019-EP-MAX XL LIBRE">08 2019-EP-MAX XL LIBRE</option>
+                                                        <option value="08 2019-EP-MAX PREMIUM LIBRE">08 2019-EP-MAX PREMIUM LIBRE</option>
+                                                        <option value="08 2019-EP-MAX PREMIUM BLACK LIBRE">08 2019-EP-MAX PREMIUM BLACK LIBRE</option>
+                                                        <option value="08 2019-ARR-MAX M">08 2019-ARR-MAX M</option>
+                                                        <option value="08 2019-ARR-MAX X">08 2019-ARR-MAX X</option>
+                                                        <option value="08 2019-ARR-MAX L">08 2019-ARR-MAX L</option>
+                                                        <option value="08 2019-ARR-MAX XL LIBRE">08 2019-ARR-MAX XL LIBRE</option>
+                                                        <option value="08 2019-ARR-MAX PREMIUM LIBRE">08 2019-ARR-MAX PREMIUM LIBRE</option>
+                                                        <option value="08 2019-ARR-MAX PREMIUM BLACK LIBRE">08 2019-ARR-MAX PREMIUM BLACK LIBRE</option>
+                                                        <option value="08 2019-EP-PLAN S CE">08 2019-EP-PLAN S CE</option>
+                                                        <option value="08 2019-ARR-PLAN S CE">08 2019-ARR-PLAN S CE</option>
+                                                        <option value="08 2019-DIF EP-PLAN XS CE">08 2019-DIF EP-PLAN XS CE</option>
+                                                        <option value="08 2019-EP-MAX Y">08 2019-EP-MAX Y</option>
+                                                    </select>
+                                                </div>
+
+                                             </div>
+                                             <div class="form-row">
+                                                 <div class="col">
+                                                     <label for="codigo_equipo">Código equipo</label>
+                                                     <input type="text" name="codigo_equipo" id="codigo_equipo" class="form-control form-control-sm" maxlength="9" required="">
+                                                 </div>
+                                                 <div class="col">
+                                                     <label for="marca_equipo">Marca equipo</label>
+                                                     <select name="marca_equipo" id="marca_equipo" class="form-control form-control-sm" required="">
+                                                        <!--Agregar valores reales-->
+                                                        <option value="" selected="selected">Seleccione</option>
+                                                        <option value="Equipo Propio">Equipo Propio</option>
+                                                        <option value="ALCATEL">ALCATEL</option>
+                                                        <option value="HUAWEI">HUAWEI</option>
+                                                        <option value="APPLE">APPLE</option>
+                                                        <option value="HTC">HTC</option>
+                                                        <option value="LG">LG</option>
+                                                        <option value="MOTOROLA">MOTOROLA</option>
+                                                        <option value="SAMSUNG">SAMSUNG</option>
+                                                        <option value="SONY">SONY</option>
+                                                        <option value="NOKIA">NOKIA</option>
+                                                        <option value="AZUMI">AZUMI</option>
+                                                        <option value="LANIX">LANIX</option>
+                                                        <option value="ZTE">ZTE</option>
+                                                        <option value="WEKI">WEKI</option>
+
+                                                    </select>
+                                                 </div>
+                                                 <div class="col">
+                                                    <label for="modelo_equipo">Modelo equipo</label>
+                                                    <select name="modelo_equipo" id="modelo_equipo" class="form-control form-control-sm" required=""><option selected="selected" value="">Seleccione</option><option value="ALCATEL IDOL 3 5.5 +  RELOJ">ALCATEL IDOL 3 5.5 +  RELOJ</option><option value="ALCATEL IDOL 3 (6039A)">ALCATEL IDOL 3 (6039A)</option><option value="ALCATEL POP 2 (4,5) PROACTIVO">ALCATEL POP 2 (4,5) PROACTIVO</option><option value="ALCATEL PIXI 3 (4.0) - 4013M">ALCATEL PIXI 3 (4.0) - 4013M</option><option value="ALCATEL POP 4 - 5051 GRAY">ALCATEL POP 4 - 5051 GRAY</option><option value="ALCATEL POP 4 - 5051 SILVER">ALCATEL POP 4 - 5051 SILVER</option><option value="ALCATEL POP 4 PLUS - 5056 SILVER">ALCATEL POP 4 PLUS - 5056 SILVER</option><option value="ALCATEL PIXI 4 -5045G BLACK">ALCATEL PIXI 4 -5045G BLACK</option><option value="ALCATEL PIXI 4 -5045G WHITE">ALCATEL PIXI 4 -5045G WHITE</option><option value="ALCATEL MODEM MIFI MW41NF">ALCATEL MODEM MIFI MW41NF</option><option value="ALCATEL 5045 BLACK ERA HIELO 5">ALCATEL 5045 BLACK ERA HIELO 5</option><option value="1ALCATEL 5045 WHITE ERA HIELO 58">1ALCATEL 5045 WHITE ERA HIELO 58</option><option value="ALCATEL PIXI 3 (4,5) - 5017A">ALCATEL PIXI 3 (4,5) - 5017A</option><option value="ALCATEL PIXI 3 (4,5) - 4027A">ALCATEL PIXI 3 (4,5) - 4027A</option><option value="HUAWEI MODEM MIFI E5573">HUAWEI MODEM MIFI E5573</option><option value="HUAWEI MODEM E8372">HUAWEI MODEM E8372</option><option value="HUAWEI MODEM E3372">HUAWEI MODEM E3372</option><option value="HUAWEI ROUTER B310S-518">HUAWEI ROUTER B310S-518</option><option value="HUAWEI Y635 BLANCO">HUAWEI Y635 BLANCO</option><option value="HUAWEI Y635 NEGRO">HUAWEI Y635 NEGRO</option><option value="HUAWEI Y6 WHITE">HUAWEI Y6 WHITE</option><option value="HUAWEI Y6 BLACK">HUAWEI Y6 BLACK</option><option value="HUAWEI GR5 (KII L23)GOLD">HUAWEI GR5 (KII L23)GOLD</option><option value="HUAWEI GR5 (KII-L23)PLATEADO">HUAWEI GR5 (KII-L23)PLATEADO</option><option value="HUAWEI GR5 (KII-L23)GRIS">HUAWEI GR5 (KII-L23)GRIS</option><option value="HUAWEI ECO (LUA-L03) BLACK">HUAWEI ECO (LUA-L03) BLACK</option><option value="HUAWEI ECO (LUA-L03) WHITE">HUAWEI ECO (LUA-L03) WHITE</option><option value="HUAWEI TAG L03 GRAY ( GR3 ">HUAWEI TAG L03 GRAY ( GR3 </option><option value="HUAWEI TAG L03 SILVER ( GR3 )">HUAWEI TAG L03 SILVER ( GR3 )</option><option value="HUAWEI TAG L03 GOLD">HUAWEI TAG L03 GOLD</option><option value="HUAWEI Y5II (CUN L03) BLACK">HUAWEI Y5II (CUN L03) BLACK</option><option value="HUAWEI Y5II (CUN L03) DORADO">HUAWEI Y5II (CUN L03) DORADO</option><option value="HUAWEI Y5II (CUN L03) WHITE">HUAWEI Y5II (CUN L03) WHITE</option><option value="HUAWEI Y6II CAM L03 NEGRO">HUAWEI Y6II CAM L03 NEGRO</option><option value="HUAWEI Y6II CAM L03 DORADO">HUAWEI Y6II CAM L03 DORADO</option><option value="HUAWEI DIG-L03 GRIS (P9 LITE SMART)">HUAWEI DIG-L03 GRIS (P9 LITE SMART)</option><option value="HUAWEI G PLAY">HUAWEI G PLAY</option><option value="HUAWEI P8 LITE BLANCO">HUAWEI P8 LITE BLANCO</option><option value="HUAWEI P8 LITE NEGRO">HUAWEI P8 LITE NEGRO</option><option value="HUAWEI P9 EVA L09 SILVER">HUAWEI P9 EVA L09 SILVER</option><option value="HUAWEI P9 EVA L09 GOLD">HUAWEI P9 EVA L09 GOLD</option><option value="HUAWEI P9 EVA L09 GRAY">HUAWEI P9 EVA L09 GRAY</option><option value="HUAWEI VIE L09 GOLD P9 PLUS">HUAWEI VIE L09 GOLD P9 PLUS</option><option value="HUAWEI VIE L09 GRAY P9 PLUS">HUAWEI VIE L09 GRAY P9 PLUS</option><option value="HUAWEI MHA L09 GRIS (MATE 9)">HUAWEI MHA L09 GRIS (MATE 9)</option><option value="HUAWEI MHA L09 DORADO (MATE 9)">HUAWEI MHA L09 DORADO (MATE 9)</option><option value="HUAWEI VNS L23 WHITE (P9 LITE)">HUAWEI VNS L23 WHITE (P9 LITE)</option><option value="HUAWEI VNS L23 BLACK  (P9 LITE)">HUAWEI VNS L23 BLACK  (P9 LITE)</option><option value="HUAWEI Y5 LITE 2017 CRO-L03 GRAY">HUAWEI Y5 LITE 2017 CRO-L03 GRAY</option><option value="HUAWEI PRA LX3 DORADO  (P9 LITE 2017)">HUAWEI PRA LX3 DORADO  (P9 LITE 2017)</option><option value="HUAWEI PRA LX3 NEGRO   (P9 LITE 2017)">HUAWEI PRA LX3 NEGRO   (P9 LITE 2017)</option><option value="HUAWEI BLL-L23 DORADO MATE 9 LITE">HUAWEI BLL-L23 DORADO MATE 9 LITE</option><option value="HUAWEI BLL-L23 GRIS MATE 9 LITE">HUAWEI BLL-L23 GRIS MATE 9 LITE</option><option value="HUAWEI VTR L09 NEGRO  ( P10 )">HUAWEI VTR L09 NEGRO  ( P10 )</option><option value="HUAWEI BLA-L09 GRIS MATE 10 PRO">HUAWEI BLA-L09 GRIS MATE 10 PRO</option><option value="HUAWEI RNE-L03 DORADO  MATE 10 LITE">HUAWEI RNE-L03 DORADO  MATE 10 LITE</option><option value="HUAWEI RNE-L03  NEGRO  MATE 10 LITE">HUAWEI RNE-L03  NEGRO  MATE 10 LITE</option><option value="HUAWEI NXT-L09 MATE 8">HUAWEI NXT-L09 MATE 8</option><option value="HUAWEI BLA-L09 GRIS+RELOJ W2 MATE 10 PRO">HUAWEI BLA-L09 GRIS+RELOJ W2 MATE 10 PRO</option><option value="HUAWEI P8  (L09)">HUAWEI P8  (L09)</option><option value="IPHONE 5S SILVER 16GB">IPHONE 5S SILVER 16GB</option><option value="IPHONE 5S SPACE GRAY 16GB">IPHONE 5S SPACE GRAY 16GB</option><option value="IPHONE 7 128GB SILVER">IPHONE 7 128GB SILVER</option><option value="IPHONE 7 128GB ROSE GOLD">IPHONE 7 128GB ROSE GOLD</option><option value="IPHONE 7 128GB BLACK">IPHONE 7 128GB BLACK</option><option value="IPHONE 7 128GB JET BLACK">IPHONE 7 128GB JET BLACK</option><option value="IPHONE 7 256GB BLACK">IPHONE 7 256GB BLACK</option><option value="IPHONE 7 32GB BLACK">IPHONE 7 32GB BLACK</option><option value="IPHONE 7 32GB GOLD">IPHONE 7 32GB GOLD</option><option value="IPHONE 7 32GB ROSE GOLD">IPHONE 7 32GB ROSE GOLD</option><option value="IPHONE 7 32GB SILVER">IPHONE 7 32GB SILVER</option><option value="IPHONE 7 PLUS128GB BLACK">IPHONE 7 PLUS128GB BLACK</option><option value="IPHONE 7 PLUS32GB SILVER">IPHONE 7 PLUS32GB SILVER</option><option value="IPHONE 7 PLUS32GB ROSE GOLD">IPHONE 7 PLUS32GB ROSE GOLD</option><option value="IPHONE 7 PLUS 256GB JET BLACK">IPHONE 7 PLUS 256GB JET BLACK</option><option value="IPHONE 7 PLUS128GB JET BLACK">IPHONE 7 PLUS128GB JET BLACK</option><option value="IPHONE 7 PLUS256GB BLACK">IPHONE 7 PLUS256GB BLACK</option><option value="IPHONE 7 PLUS32GB BLACK">IPHONE 7 PLUS32GB BLACK</option><option value="IPHONE 6 32 GB SPACE GRAY">IPHONE 6 32 GB SPACE GRAY</option><option value="IPHONE 6S ROSE GOLD 64GB">IPHONE 6S ROSE GOLD 64GB</option><option value="IPHONE 6S GOLD 64GB">IPHONE 6S GOLD 64GB</option><option value="IPHONE 6S SILVER 64GB">IPHONE 6S SILVER 64GB</option><option value="IPHONE 6S SPACE GRAY 64GB">IPHONE 6S SPACE GRAY 64GB</option><option value="IPHONE 6S ROSE GOLD 16GB">IPHONE 6S ROSE GOLD 16GB</option><option value="IPHONE 6S GOLD 16GB">IPHONE 6S GOLD 16GB</option><option value="IPHONE 6S SPACE GRAY 128GB">IPHONE 6S SPACE GRAY 128GB</option><option value="IPHONE 6S SILVER 16GB">IPHONE 6S SILVER 16GB</option><option value="IPHONE 6S SPACE GRAY 16GB">IPHONE 6S SPACE GRAY 16GB</option><option value="IPHONE 6S PLUS SPACE GRAY 128">IPHONE 6S PLUS SPACE GRAY 128</option><option value="IPHONE 6S PLUS ROSE GOLD 64GB">IPHONE 6S PLUS ROSE GOLD 64GB</option><option value="IPHONE 6S PLUS GOLD 64GB">IPHONE 6S PLUS GOLD 64GB</option><option value="IPHONE 6S PLUS SILVER 64GB">IPHONE 6S PLUS SILVER 64GB</option><option value="IPHONE 6S PLUS SPACE GRAY 64GB">IPHONE 6S PLUS SPACE GRAY 64GB</option><option value="IPHONE 6S PLUS ROSE GOLD 16G">IPHONE 6S PLUS ROSE GOLD 16G</option><option value="IPHONE 6S PLUS GOLD 16GB">IPHONE 6S PLUS GOLD 16GB</option><option value="IPHONE 6S PLUS SILVER 16GB">IPHONE 6S PLUS SILVER 16GB</option><option value="IPHONE 6S PLUS SPACE GRAY 16GB">IPHONE 6S PLUS SPACE GRAY 16GB</option><option value="IPHONE SE  SPACE GRAY 16GB">IPHONE SE  SPACE GRAY 16GB</option><option value="IPHONE SE  SILVER 16GB">IPHONE SE  SILVER 16GB</option><option value="IPHONE SE  GOLD 16GB">IPHONE SE  GOLD 16GB</option><option value="IPHONE SE  ROSE GOLD 16GB">IPHONE SE  ROSE GOLD 16GB</option><option value="IPHONE SE  SILVER 64GB">IPHONE SE  SILVER 64GB</option><option value="IPHONE SE  SPACE GRAY 64GB">IPHONE SE  SPACE GRAY 64GB</option><option value="IPHONE SE  SPACE GRAY 32GB">IPHONE SE  SPACE GRAY 32GB</option><option value="IPHONE 8 PLUS GOLD 64GB">IPHONE 8 PLUS GOLD 64GB</option><option value="IPHONE 8 PLUS SILVER 64GB">IPHONE 8 PLUS SILVER 64GB</option><option value="IPHONE 8 PLUS SPACE GRAY 64GB">IPHONE 8 PLUS SPACE GRAY 64GB</option><option value="IPHONE 8 PLUS SPACE GRAY 256GB">IPHONE 8 PLUS SPACE GRAY 256GB</option><option value="IPHONE 8 SILVER 64GB">IPHONE 8 SILVER 64GB</option><option value="IPHONE 8 GOLD 64GB">IPHONE 8 GOLD 64GB</option><option value="IPHONE 8 SPACE GRAY 64GB">IPHONE 8 SPACE GRAY 64GB</option><option value="IPHONE 8 SPACE GRAY 256GB">IPHONE 8 SPACE GRAY 256GB</option><option value="IPHONE X SPACE GRAY 64GB">IPHONE X SPACE GRAY 64GB</option><option value="IPHONE X SILVER 64GB">IPHONE X SILVER 64GB</option><option value="IPHONE X SPACE GRAY 256GB">IPHONE X SPACE GRAY 256GB</option><option value="HTC DESIRE 626 BLUE">HTC DESIRE 626 BLUE</option><option value="HTC DESIRE 626 WHITE">HTC DESIRE 626 WHITE</option><option value="HTC DESIRE 626 BLACK">HTC DESIRE 626 BLACK</option><option value="HTC 530 GRIS">HTC 530 GRIS</option><option value="HTC 530 WHITE">HTC 530 WHITE</option><option value="HTC 530 AZUL">HTC 530 AZUL</option><option value="HTC A56 WHITE (DESIRE 10 LIFESTYLE)">HTC A56 WHITE (DESIRE 10 LIFESTYLE)</option><option value="HTC A56 BLACK (DESIRE 10 LIFESTYLE)">HTC A56 BLACK (DESIRE 10 LIFESTYLE)</option><option value="HTC 650 GRIS">HTC 650 GRIS</option><option value="HTC 650 GRAFITO">HTC 650 GRAFITO</option><option value="HTC 10">HTC 10</option><option value="HTC M9">HTC M9</option><option value="HTC A9S  NEGRO">HTC A9S  NEGRO</option><option value="HTC A9S  DORADO">HTC A9S  DORADO</option><option value="LG G4 H815P">LG G4 H815P</option><option value="LG G4 STYLUS H635C">LG G4 STYLUS H635C</option><option value="LG MAGNA H520G">LG MAGNA H520G</option><option value="LG LEON">LG LEON</option><option value="LG K8 LITE WHITE (K350F)">LG K8 LITE WHITE (K350F)</option><option value="LG K8 LITE BLACK BLUE (K350F)">LG K8 LITE BLACK BLUE (K350F)</option><option value="LG K10 LITE WHITE (K430T)">LG K10 LITE WHITE (K430T)</option><option value="LG K10 LITE BLACK BLUE  (K430T)">LG K10 LITE BLACK BLUE  (K430T)</option><option value="LG K10 2017  M250F BLACK">LG K10 2017  M250F BLACK</option><option value="LG K10 2017  M250F GOLD">LG K10 2017  M250F GOLD</option><option value="LG K4 2017  X230F BROWN">LG K4 2017  X230F BROWN</option><option value="LG K4 2017  X230F TITAN">LG K4 2017  X230F TITAN</option><option value="LG K430T WHITE ERA DEL HIELO 5">LG K430T WHITE ERA DEL HIELO 5</option><option value="LG K430T BLUE ERA DEL HIELO 5">LG K430T BLUE ERA DEL HIELO 5</option><option value="LG V10 - H960A">LG V10 - H960A</option><option value="LG V10 - H960A + MEMORY 200 GB">LG V10 - H960A + MEMORY 200 GB</option><option value="LG G5 SE H840 GOLD">LG G5 SE H840 GOLD</option><option value="LG G5 SE H840 TITANIUM">LG G5 SE H840 TITANIUM</option><option value="15LG G5 SE H840 TITANIUM + CAMARA 3607">15LG G5 SE H840 TITANIUM + CAMARA 3607</option><option value="LG G5 SE H840 TITANIUM + BATTERY">LG G5 SE H840 TITANIUM + BATTERY</option><option value="LG STYLUS 2 PLUS K530F BROWN">LG STYLUS 2 PLUS K530F BROWN</option><option value="LG STYLUS 2 PLUS K530F TITANIUM">LG STYLUS 2 PLUS K530F TITANIUM</option><option value="LG H870 PLATINUM G6">LG H870 PLATINUM G6</option><option value="LG Q6  M700F ICE PLATINUM">LG Q6  M700F ICE PLATINUM</option><option value="LG H870 BLACK  G6">LG H870 BLACK  G6</option><option value="LG H870 WHITE  G6">LG H870 WHITE  G6</option><option value="LG G3 BEAT">LG G3 BEAT</option><option value="MOTOROLA XT1670 DORADO G5">MOTOROLA XT1670 DORADO G5</option><option value="MOTOROLA XT1680 DORADO G5 PLUS">MOTOROLA XT1680 DORADO G5 PLUS</option><option value="MOTOROLA XT1680 GRIS OSCURO G5 PLUS">MOTOROLA XT1680 GRIS OSCURO G5 PLUS</option><option value="MOTOROLA XT1670 GRIS OSCURO G5">MOTOROLA XT1670 GRIS OSCURO G5</option><option value="MOTOROLA XT1756 NEGRO (MOTO C )">MOTOROLA XT1756 NEGRO (MOTO C )</option><option value="MOTO E 2da GENERACION (XT1527)">MOTO E 2da GENERACION (XT1527)</option><option value="MOTO MAXX (XT1225)PROACTIVO">MOTO MAXX (XT1225)PROACTIVO</option><option value="SAMSUNG GALAXY NOTE 5">SAMSUNG GALAXY NOTE 5</option><option value="SAMSUNG GALAXY J111 BLACK">SAMSUNG GALAXY J111 BLACK</option><option value="SAMSUNG GALAXY J111 WHITE">SAMSUNG GALAXY J111 WHITE</option><option value="SAMSUNG GALAXY J2 WHITE">SAMSUNG GALAXY J2 WHITE</option><option value="SAMSUNG GALAXY J2 BLACK">SAMSUNG GALAXY J2 BLACK</option><option value="SAMSUNG GALAXY J5 WHITE">SAMSUNG GALAXY J5 WHITE</option><option value="SAMSUNG GALAXY J5 BLACK">SAMSUNG GALAXY J5 BLACK</option><option value="SAMSUNG GALAXY J510 MN BLACK">SAMSUNG GALAXY J510 MN BLACK</option><option value="SAMSUNG GALAXY J510 MN WHITE">SAMSUNG GALAXY J510 MN WHITE</option><option value="SAMSUNG GALAXY J710 MN BLACK">SAMSUNG GALAXY J710 MN BLACK</option><option value="SAMSUNG GALAXY J710 MN WHITE">SAMSUNG GALAXY J710 MN WHITE</option><option value="SAMSUNG GALAXY J7 BLACK">SAMSUNG GALAXY J7 BLACK</option><option value="SAMSUNG GALAXY J7 WHITE">SAMSUNG GALAXY J7 WHITE</option><option value="SAMSUNG GALAXY S6">SAMSUNG GALAXY S6</option><option value="SAMSUNG GALAXY S6 EDGE">SAMSUNG GALAXY S6 EDGE</option><option value="SAMSUNG GALAXY S6 EDGE + (PLUS )">SAMSUNG GALAXY S6 EDGE + (PLUS )</option><option value="SAMSUNG GALAXY S7 G930 BLACK">SAMSUNG GALAXY S7 G930 BLACK</option><option value="SAMSUNG GALAXY S7 G930 GOLD">SAMSUNG GALAXY S7 G930 GOLD</option><option value="SAMSUNG GALAXY S7 G930 SILVER">SAMSUNG GALAXY S7 G930 SILVER</option><option value="SAMSUNG GALAXY S7 EDGE G935 BLACK">SAMSUNG GALAXY S7 EDGE G935 BLACK</option><option value="SAMSUNG GALAXY S7 EDGE G935 SILVER">SAMSUNG GALAXY S7 EDGE G935 SILVER</option><option value="SAMSUNG GALAXY S7 EDGE G935 GOLD">SAMSUNG GALAXY S7 EDGE G935 GOLD</option><option value="SAMSUNG GALAXY S8 G950F GOLD">SAMSUNG GALAXY S8 G950F GOLD</option><option value="SAMSUNG GALAXY S8 G950F BLACK">SAMSUNG GALAXY S8 G950F BLACK</option><option value="SAMSUNG GALAXY S8 G950F ORCHID GREY">SAMSUNG GALAXY S8 G950F ORCHID GREY</option><option value="SAMSUNG GALAXY S8+ G955F BLACK PLUS">SAMSUNG GALAXY S8+ G955F BLACK PLUS</option><option value="SAMSUNG GALAXY S8+ G955F ORCHID GREY">SAMSUNG GALAXY S8+ G955F ORCHID GREY</option><option value="SAMSUNG GALAXY S8+ G955F GOLD PLUS">SAMSUNG GALAXY S8+ G955F GOLD PLUS</option><option value="SAMSUNG NOTE 8 N950F BLACK">SAMSUNG NOTE 8 N950F BLACK</option><option value="SAMSUNG G570M J5 PRIME BLACK">SAMSUNG G570M J5 PRIME BLACK</option><option value="SAMSUNG G610M J7 PRIME BLACK">SAMSUNG G610M J7 PRIME BLACK</option><option value="SAMSUNG G610M J7 PRIME WHITE GOLD">SAMSUNG G610M J7 PRIME WHITE GOLD</option><option value="SAMSUNG G535M J2 PRIME SILVER">SAMSUNG G535M J2 PRIME SILVER</option><option value="20SAMSUNG A7 A720F NEGRO6">20SAMSUNG A7 A720F NEGRO6</option><option value="20SAMSUN GALAXY A5 - A500Y7">20SAMSUN GALAXY A5 - A500Y7</option><option value="SAMSUNG CORE PRIME G360">SAMSUNG CORE PRIME G360</option><option value="SAMSUNG GALAXY ACE 4 G316ML">SAMSUNG GALAXY ACE 4 G316ML</option><option value="SONY XPERIA Z5 - E6603">SONY XPERIA Z5 - E6603</option><option value="SONY XPERIA Z5 PREMIUM - E6853">SONY XPERIA Z5 PREMIUM - E6853</option><option value="SONY XPERIA Z3+ E6553 BLACK">SONY XPERIA Z3+ E6553 BLACK</option><option value="SONY XPERIA Z3+ E6553 WHITE">SONY XPERIA Z3+ E6553 WHITE</option><option value="SONY XPERIA C5 ULTRA - E5506">SONY XPERIA C5 ULTRA - E5506</option><option value="SONY XPERIA C4 - E5353">SONY XPERIA C4 - E5353</option><option value="2SONY XPERIA XA F3113 BLACK6">2SONY XPERIA XA F3113 BLACK6</option><option value="SONY XPERIA XA F3113 WHITE">SONY XPERIA XA F3113 WHITE</option><option value="SONY XPERIA E5 F3313 BLACK">SONY XPERIA E5 F3313 BLACK</option><option value="SONY XPERIA E5 F3313 WHITE">SONY XPERIA E5 F3313 WHITE</option><option value="SONY XPERIA X F5121 BLACK">SONY XPERIA X F5121 BLACK</option><option value="SONY XPERIA XA1 G3123 BLACK">SONY XPERIA XA1 G3123 BLACK</option><option value="SONY XPERIA XA1 G3123 WHITE">SONY XPERIA XA1 G3123 WHITE</option><option value="SONY XPERIA XA1 ULTRA G3223 BLACK">SONY XPERIA XA1 ULTRA G3223 BLACK</option><option value="SONY XPERIA XA1 ULTRA G3223 WHITE">SONY XPERIA XA1 ULTRA G3223 WHITE</option><option value="SONY XPERIA XZ PREMIUM G8141 BLACK">SONY XPERIA XZ PREMIUM G8141 BLACK</option><option value="SONY XPERIA XA ULTRA F3213 BLACK">SONY XPERIA XA ULTRA F3213 BLACK</option><option value="SONY XPERIA XA ULTRA F3213 WHITE">SONY XPERIA XA ULTRA F3213 WHITE</option><option value="SONY XPERIA XZ F8331 BLACK">SONY XPERIA XZ F8331 BLACK</option><option value="SONY XPERIA XZ F8331 BLUE">SONY XPERIA XZ F8331 BLUE</option><option value="SONY XPERIA L1 G3313 WHITE">SONY XPERIA L1 G3313 WHITE</option><option value="SONY XPERIA L1 G3313 BLACK">SONY XPERIA L1 G3313 BLACK</option><option value="SONY XPERIA M4 AQUA - E2306">SONY XPERIA M4 AQUA - E2306</option><option value="SONY XPERIA M5 - E5606 BLACK">SONY XPERIA M5 - E5606 BLACK</option><option value="SONY XPERIA E4 - E2053">SONY XPERIA E4 - E2053</option><option value="SONY XPERIA M5 - E5606">SONY XPERIA M5 - E5606</option><option value="SONY XPERIA T3 - D5106">SONY XPERIA T3 - D5106</option><option value="SONY XPERIA M2 - D2306">SONY XPERIA M2 - D2306</option><option value="NOKIA LUMIA 530">NOKIA LUMIA 530</option><option value="AZUMI IRO A5QL WHITE">AZUMI IRO A5QL WHITE</option><option value="AZUMI IRO A5QL SILVER">AZUMI IRO A5QL SILVER</option><option value="AZUMI IRO A5QL BLACK">AZUMI IRO A5QL BLACK</option><option value="AZUMI A35C LITE BLACK">AZUMI A35C LITE BLACK</option><option value="AZUMI A35C LITE WHITE">AZUMI A35C LITE WHITE</option><option value="AZUMI A40 STYLE PLUS SILVER">AZUMI A40 STYLE PLUS SILVER</option><option value="AZUMI A40 STYLE PLUS WHITE">AZUMI A40 STYLE PLUS WHITE</option><option value="AZUMI SPEED 5.5 PLATA">AZUMI SPEED 5.5 PLATA</option><option value="AZUMI SPEED 5.5 BLANCO">AZUMI SPEED 5.5 BLANCO</option><option value="AZUMI SPEED 5.5 GRAY">AZUMI SPEED 5.5 GRAY</option><option value="AZUMI SPEED 5.5 NEGRO">AZUMI SPEED 5.5 NEGRO</option><option value="LANIX L820">LANIX L820</option><option value="ZTE MODEM MF79S">ZTE MODEM MF79S</option><option value="ZTE MODEM MF920T">ZTE MODEM MF920T</option><option value="ZTE BLADE  A320 NEGRO">ZTE BLADE  A320 NEGRO</option><option value="ZTE BLADE  A320 BLANCO">ZTE BLADE  A320 BLANCO</option><option value="ZTE V6 PLUS SILVER">ZTE V6 PLUS SILVER</option><option value="ZTE BLADE A602 GRIS">ZTE BLADE A602 GRIS</option><option value="ZTE BLADE A602 DORADO">ZTE BLADE A602 DORADO</option><option value="ZTE A610 SILVER">ZTE A610 SILVER</option><option value="ZTE BLADE A510 BLANCO">ZTE BLADE A510 BLANCO</option><option value="ZTE BLADE A510 GRIS">ZTE BLADE A510 GRIS</option><option value="ZTE BLADE A460">ZTE BLADE A460</option><option value="WEKI W468C AZUL">WEKI W468C AZUL</option><option value="WEKI W468C ROSADO">WEKI W468C ROSADO</option><option value="2HUAWEI Y6 2018 ATU-L0364">2HUAWEI Y6 2018 ATU-L0364</option><option value="Huawei P SMART">Huawei P SMART</option><option value="SAMSUNG GALAXY S9">SAMSUNG GALAXY S9</option><option value="MOTOROLA G6 Play">MOTOROLA G6 Play</option><option value="HUAWEI Y7">HUAWEI Y7</option><option value="MOTOROLA E5 XT1944">MOTOROLA E5 XT1944</option><option value="MOTOROLA G5S XT1790">MOTOROLA G5S XT1790</option><option value="HUAWEI P20 lite ane-Lx3">HUAWEI P20 lite ane-Lx3</option><option value="LG STYLUS 3">LG STYLUS 3</option><option value="IPHONE 6 32GB">IPHONE 6 32GB</option><option value="HUAWEI  P20 Pro">HUAWEI  P20 Pro</option><option value="SONY XPERIA XA2">SONY XPERIA XA2</option><option value="HUAWEI Y5">HUAWEI Y5</option><option value="HUAWEI Y3 II">HUAWEI Y3 II</option><option value="HUAWEI Y5 lite">HUAWEI Y5 lite</option><option value="MOTOROLA G6">MOTOROLA G6</option><option value="Samsung Galaxy J5 Prime G570m Gold">Samsung Galaxy J5 Prime G570m Gold</option><option value="Samsung J6">Samsung J6</option><option value="SONY XPERIA L2H3223">SONY XPERIA L2H3223</option><option value="Samsung Galaxy J4">Samsung Galaxy J4</option><option value="HUAWEI P20">HUAWEI P20</option><option value="SAMSUNG GALAXY NOTE 9">SAMSUNG GALAXY NOTE 9</option><option value="MOTOROLA G6 Plus">MOTOROLA G6 Plus</option><option value="Sony Xperia XZ2">Sony Xperia XZ2</option><option value="SONY XPERIA L2">SONY XPERIA L2</option><option value="IPHONE X S">IPHONE X S</option><option value="IPHONE X S MAX">IPHONE X S MAX</option><option value="IPHONE X R">IPHONE X R</option><option value="SONY XPERIA XA2 ULTRA">SONY XPERIA XA2 ULTRA</option><option value="Huawei Mate 20 Lite">Huawei Mate 20 Lite</option><option value="SAMSUNG S9 PLUS">SAMSUNG S9 PLUS</option><option value="HUAWEI ANE-LX3">HUAWEI ANE-LX3</option><option value="HUAWEI MATE P20 PRO">HUAWEI MATE P20 PRO</option><option value="NOKIA 2.1">NOKIA 2.1</option><option value="Samsung J6 PLUS">Samsung J6 PLUS</option><option value="NOKIA 5.1 PLUS">NOKIA 5.1 PLUS</option><option value="LG Q Stylus Plus">LG Q Stylus Plus</option><option value="LG K11 PLUS">LG K11 PLUS</option><option value="MOTOROLA E5 PLAY">MOTOROLA E5 PLAY</option><option value="HUAWEI P SMART">HUAWEI P SMART</option><option value="Samsung Galaxy J4 PLUS">Samsung Galaxy J4 PLUS</option><option value="Samsung Galaxy J4 CORE">Samsung Galaxy J4 CORE</option><option value="HUAWEI Y7 2019">HUAWEI Y7 2019</option><option value="IPHONE 6S 32GB">IPHONE 6S 32GB</option><option value="SAMSUNG S10&lt;">SAMSUNG S10&lt;</option><option value="HUAWEI MIFI 5785">HUAWEI MIFI 5785</option><option value="Motorola G7 PLUS">Motorola G7 PLUS</option><option value="Samsung S10E">Samsung S10E</option><option value="Samsung S10 PLUS 512GB">Samsung S10 PLUS 512GB</option><option value="Samsung S10 PLUS 128GB">Samsung S10 PLUS 128GB</option><option value="HUAWEI Y6 2019">HUAWEI Y6 2019</option><option value="Samsung A9">Samsung A9</option><option value="HUAWEI P30 LITE">HUAWEI P30 LITE</option><option value="HUAWEI P30">HUAWEI P30</option><option value="HUAWEI P30 PRO">HUAWEI P30 PRO</option><option value="ZTE V9 VITA">ZTE V9 VITA</option><option value="LG G7">LG G7</option><option value="LG G7 PLUS">LG G7 PLUS</option><option value="SAMSUNG A10">SAMSUNG A10</option><option value="Samsung J8">Samsung J8</option><option value="Samsung A20">Samsung A20</option><option value="Samsung A20S">Samsung A20S</option><option value="Samsung A50">Samsung A50</option><option value="Huawei P SMART 2019">Huawei P SMART 2019</option><option value="SAMSUNG A30">SAMSUNG A30</option><option value="NOKIA 3.1">NOKIA 3.1</option><option value="Samsung A70">Samsung A70</option><option value="IPHONE XS 256 GB">IPHONE XS 256 GB</option><option value="347">347</option><option value="Nokia 5.1">Nokia 5.1</option><option value="SAMSUNG A80">SAMSUNG A80</option><option value="LG K50">LG K50</option><option value="SAMSUNG GALAXY NOTE 10">SAMSUNG GALAXY NOTE 10</option><option value="HUAWEI MATE 20 PRO">HUAWEI MATE 20 PRO</option><option value="NOKIA 1 PLUS">NOKIA 1 PLUS</option><option value="HUAWEI Y9">HUAWEI Y9</option><option value="HUAWEI Y9 PRIME 2019">HUAWEI Y9 PRIME 2019</option><option value="HUAWEI Y6 PRIME">HUAWEI Y6 PRIME</option><option value="LG Q60">LG Q60</option><option value="IPHONE 11 PRO MAX 512 GB">IPHONE 11 PRO MAX 512 GB</option><option value="SMART PET">SMART PET</option><option value="IPHONE 11 PRO 64GB">IPHONE 11 PRO 64GB</option><option value="IPHONE 11 128GB">IPHONE 11 128GB</option><option value="IPHONE 11 64GB">IPHONE 11 64GB</option><option value="IPHONE 11 PRO 256GB">IPHONE 11 PRO 256GB</option><option value="IPHONE SE  SILVER 32GB">IPHONE SE  SILVER 32GB</option><option value="MODEM ALCATEL L100">MODEM ALCATEL L100</option><option value="Equipo propio">Equipo propio</option></select>
+                                                 </div>
+                                                 <div class="col">
+                                                     <label for="ci">N° serie/documento ci</label>
+                                                     <input type="text" name="ci" id="ci" class="form-control form-control-sm" maxlength="10" required="">
+                                                 </div>
+                                             </div>
+                                             <div class="form-row">
+                                                 <div class="col">
+                                                     <label for="sim">SIMCARD</label>
+                                                     <input type="text" name="sim" id="sim" class="form-control form-control-sm" maxlength="15" required="">
+                                                 </div>
+                                                 <div class="col">
+                                                     <label for="grupo">Grupo solicitud</label>
+                                                     <input type="text" name="grupo" id="grupo_solicitud" value="NEWBORDER" class="form-control form-control-sm" readonly="readonly">
+
+                                                 </div>
+                                                 <div class="col">
+                                                     <label for="forma_entrega">Forma de entrega</label>
+                                                     <select name="forma_entrega" id="forma_entrega" class="form-control form-control-sm" required="">
+                                                            <!--Agregar valores reales-->
+                                                            <option value="" selected="selected"> Selecciones </option>
+                                                            <option value="Delivery">Delivery</option>
+                                                            <option value="Delivery NewBorder">Delivery NewBorder</option>
+                                                            <option value="Delivery Transcom">Delivery Transcom</option>
+                                                            <option value="Delivery Aguspas">Delivery Aguspas</option>
+                                                            <option value="CAC Delivery">CAC Delivery</option>
+                                                            <option value="Entrega FVM">Entrega FVM</option>
+                                               
+                                                     </select>
+                                                 </div>
+                                                 <div class="col">
+                                                     <label for="direccion_entrega">Dirección de entrega</label>
+                                                     <input type="text" name="direccion_entrega" id="direccion_entrega" class="form-control form-control-sm" required="" placeholder="Introduce una ubicación" autocomplete="off">
+                                                 </div>
+                                             </div>
+                                             <div class="form-row">
+                                                 <div class="col">
+                                                    <label for="fecha_entrega">Fecha de entrega</label>
+                                                    <input type="date" name="fecha_entrega" id="fecha_entrega" class="form-control form-control-sm" required="">
+                                                 </div>
+                                                 <div class="col">
+                                                    <label for="periodo_entrega">Período de entrega</label>
+                                                    <select name="periodo_entrega" id="periodo_entrega" class="form-control form-control-sm" required="">
+                                                           <!--Agregar valores reales-->
+                                                      <option selected="selected">Seleccione</option>
+                                                      <option value="AM">AM</option>
+                                                      <option value="PM">PM</option>
+                                                      <option value="AM/PM">AM/PM</option>
+                                                    </select>
+                                                 </div>
+                                                 <div class="col">
+                                                    <label for="region">Región</label>
+                                                    <select name="region" id="region" class="form-control form-control-sm" required=""><option selected="selected" disabled="disabled">Seleccione</option><option value="Arica y Parinacota">Arica y Parinacota</option><option value="Tarapacá">Tarapacá</option><option value="Antofagasta">Antofagasta</option><option value="Atacama">Atacama</option><option value="Coquimbo">Coquimbo</option><option value="Valparaíso">Valparaíso</option><option value="Región del Libertador Gral. Bernardo O’Higgins">Región del Libertador Gral. Bernardo O’Higgins</option><option value="Región del Maule">Región del Maule</option><option value="Región del Biobío">Región del Biobío</option><option value="Región de la Araucanía">Región de la Araucanía</option><option value="Región de Los Ríos">Región de Los Ríos</option><option value="Región de Los Lagos">Región de Los Lagos</option><option value="Región Aisén del Gral. Carlos Ibáñez del Campo">Región Aisén del Gral. Carlos Ibáñez del Campo</option><option value="Región de Magallanes y de la Antártica Chilena">Región de Magallanes y de la Antártica Chilena</option><option value="Región Metropolitana de Santiago">Región Metropolitana de Santiago</option></select>
+                                                 </div>
+                                                 <div class="col">
+                                                    <label for="comuna">Comuna</label>
+                                                    <select name="comuna" id="comuna" class="form-control form-control-sm" required=""><option selected="selected" disabled="disabled">Seleccione</option></select>
+                                                 </div>
+                                             </div>
+                                             <div class="form-row">
+                                                 <div class="col">
+                                                    <label for="zona_rm">Zona RM</label>
+                                                    <select name="zona_rm" id="zona_rm" class="form-control form-control-sm" readonly="">
+                                                           <!--Agregar valores reales-->
+                                                     
+                                                    <option selected="selected" value="N/A"></option></select>
+                                                 </div>
+                                                 <div class="col">
+                                                    <label for="acreditacion">Tipo de Acreditación</label>
+                                                    <select name="acreditacion" id="acreditacion" class="form-control form-control-sm" required="">
+                                                           <!--Agregar valores reales-->
+                                                           <option value="" selected="selected"> Seleccione </option>
+                                                           <option value="Cliente de otra compañia">CLIENTE DE OTRA COMPAÑIA</option>
+                                                            <option value="Nota de comportamiento">NOTA DE COMPORTAMIENTO</option>
+                                                            <option value="Sin acreditación">SIN ACREDITACION</option>
+
+                                                    </select>
+                                                 </div>
+                                                 <div class="col">
+                                                    <label for="abono">Abono</label>
+                                                    <select name="abono" id="abono" class="form-control form-control-sm" required="">
+                                                           <!--Agregar valores reales-->
+                                                      <option selected="selected" value="no">No</option>
+                                                      <option value="si">Si</option>
+                                                  
+                                                    </select>
+                                                 </div>
+                                                 <div class="col">
+                                                     <label for="monto_abono">Monto de abono</label>
+                                                     <input type="text" name="monto_abono" id="monto_abono" pattern="^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$" maxlenght="6" class="form-control form-control-sm" required="">
+                                                 </div>
+
+                                             </div>
+                                             <div class="form-row">
+                                                 <div class="col">
+                                                    <label for="observacion">Observación</label>
+                                                    <textarea id="observacion" name="observacion" cols="50" rows="5" class="form-control"></textarea> 
+                                                 </div>
+                                                 <div class="col">
+                                                     <label for="pdf_ci">PDF Cédula identidad</label>
+                                                     <input type="file" name="pdfci" id="pdfci" class="form control form-control-file" accept=".pdf">
+                                                     <label for="pdf_otro">PDF Otro</label>
+                                                     <input type="file" name="pdf_otro" id="pdf_otro" class="form control form-control-file" accept=".pdf">
+
+                                                 </div>
+                                               
+                                             </div>
+                                             <div class="form-row">
+                                                 <input type="submit" id="submit" name="submit" class="btn btn-primary " value="Ingresar datos">
+                                             </div>
+                                        </div>     
+                                       
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="container" id="reporte_container">
+                                <div class="row">
+                                    <h4>Obtener reporte</h4>
+                                </div>
+                                <div class="reporte_row">
+                                    <form id="form_reporte">
+                                        <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <label for="reporte_tipoventa">Tipo de Venta</label>
+                                                    <select name="reporte_tipoventa" id="reporte_tipoventa" class="form-control form-control-sm">
+                                                        <option selected="selected" value="todo">Todas</option>
+                                                        <option value="one">ONE</option>
+                                                        <option value="front">FRONT</option>
+                                                    </select>
+                                                    <label for="reporte_rut">Rut</label>
+                                                    <input type="text" name="reporte_rut" id="reporte_rut" class="form-control form-control-sm">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="reporte_idventa">ID Venta</label>
+                                                    <input type="text" name="reporte_idventa" id="reporte_idventa" class="form-control form-control-sm">
+                                                    <label for="fechas_reporte">Fechas</label>
+                                                    <input type="text" name="fechas_reporte" value="12/20/2019 - 12/20/2019" id="fechas_reporte" class="form-control form-control-sm">
+
+                                                </div>
+                                                <div class="col">
+                                                    <label for="reporte_numcaso">Número de caso</label>
+                                                    <input type="text" name="reporte_numcaso" onkeyup="this.value = this.value.toUpperCase();" id="reporte_numcaso" class="form-control form-control-sm">
+                                                    <label for="reporte_estado">Estado</label>
+                                                    <select name="reporte_estado" id="reporte_estado" class="form-control form-control-sm">
+                                                        <!--Agregar valores reales-->
+                                                        <option value="" selected="selected"> Seleccione </option>
+                                                        <option value="Pendiente certificación">Pendiente de certificación</option>
+                                                        <option value="Pendiente entrega">Pendiente de entrega</option>
+                                                        <option value="Pendiente activación">Pendiente de activación</option>
+                                                        <option value="Activada">Activada</option>
+                                                        <option value="Cancelada">Cancelada</option>
+                                                    </select>
+                                                    
+                                                </div>
+                                                <div class="col">
+                                                    <label for="reporte_numorden">Número de orden</label>
+                                                    <input type="text" name="reporte_numorden" id="reporte_numorden" class="form-control form-control-sm">
+                                                   
+                                                </div>
+                                              
+                                            
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                     <input type="submit" id="submit_reporte" name="submit" class="btn btn-primary  btn-sm" value="Ver datos">
+                                                </div> 
+                                                <div class="col">
+                                                    <button class="btn btn-dark btn-sm" id="btn_exportar" onclick="exportar()">Exportar reporte</button>
+                                                </div>
+                                               
+                                            </div>
+                                        </div></form>
+                                   
+                                </div>
+                                <div class="row" id="datos_mostrar_reporte">
+                                        
+                                        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                <div class="container" id="buscar_container">
+                                        <div class="row">
+                                            <h4>Realizar consulta</h4>
+                                        </div>
+                                        <div class="buscar_row">
+                                            <form id="form_busqueda">
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col">
+                                                            <label for="busqueda_tipoventa">Tipo de Venta</label>
+                                                            <select name="busqueda_tipoventa" id="busqueda_tipoventa" class="form-control form-control-sm">
+                                                                <option selected="selected" value="todo">Todas</option>
+                                                                <option value="one">ONE</option>
+                                                                <option value="front">FRONT</option>
+                                                            </select>
+                                                            <label for="busqueda_rut">Rut</label>
+                                                            <input type="text" name="busqueda_rut" id="busqueda_rut" class="form-control form-control-sm">
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="busqueda_idventa">ID Venta</label>
+                                                            <input type="text" name="busqueda_idventa" id="busqueda_idventa" class="form-control form-control-sm">
+                                                            <label for="fechas_busqueda">Fechas</label>
+                                                            <input type="text" name="fechas_busqueda" value="12/20/2019 - 12/20/2019" id="fechas_busqueda" class="form-control form-control-sm">
+        
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="busqueda_numcaso">Número de caso</label>
+                                                            <input type="text" name="busqueda_numcaso" id="busqueda_numcaso" onkeyup="this.value = this.value.toUpperCase();" class="form-control form-control-sm">
+                                                            <label for="busqueda_estado">Estado</label>
+                                                            <select name="busqueda_estado" id="busqueda_estado" class="form-control form-control-sm">
+                                                                <!--Agregar valores reales-->
+                                                                <option value="" selected="selected"> Seleccione </option>
+                                                                <option value="Pendiente certificacion">Pendiente de certificación</option>
+                                                                <option value="Pendiente entrega">Pendiente de entrega</option>
+                                                                <option value="Pendiente activacion">Pendiente de activación</option>
+                                                                <option value="Activada">Activada</option>
+                                                                <option value="Cancelada">Cancelada</option>
+                                                            </select>
+                                                            
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="busqueda_numorden">Número de orden</label>
+                                                            <input type="text" name="busqueda_numorden" id="busqueda_numorden" class="form-control form-control-sm">
+                                                           
+                                                        </div>
+                                                      
+                                                    
+                                                    </div>
+                                                    <div class="form-row">
+                                                   
+                                                        <input type="submit" name="submit" id="submit_busqueda" class="btn btn-primary  btn-sm" value="Buscar">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="row" id="datos_mostrar_busqueda">
+                                                
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="tab-pane fade" id="cambiarpassword" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <div class="container">
+                <div class="row" id="changepass">
+                        <div class="card" id="changepasscard">
+                            <div class="card-header">
+                                Cambio de contraseña
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" id="changepassform">
+                                    <div class="form-group">
+                                        <label for="pass">Contraseña antigua</label>
+                                        <p><input type="password" name="pass" class="form-control" maxlenght="8" minlength="8" required=""></p>
+                                        <label for="newpass">Contraseña nueva</label>
+                                        <p><input type="password" name="newpass" class="form-control" maxlenght="8" minlength="8" required=""></p>
+                                        <label for="newpasscheck">Repite contraseña nueva</label>
+                                        <p><input type="password" name="newpasscheck" class="form-control" maxlenght="8" minlength="8" required=""></p>                          
+                                        <input type="submit" name="submit" value="Cambiar contraseña" class="btn btn-primary form-control">
+                                    </div>
+                                   
+                                    
+                                </form>
+                            </div>
+                        </div>
+          
+                    </div>
+      </div>
+                        </div>
+                        <div class="tab-pane fade" id="ruta" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                            <div class="container">
+                                <div class="row">
+                                    <h3>Ventas en ruta</h3>
+                                </div>
+                                <div class="row">
+                                    <p>Aquí podrás ver las solicitudes que serán despachadas mañana</p>
+                                </div>
+                                <div class="row" id="tabla_ruta"></div>
+
+               
+          
+                            </div>
+                        </div>
+
+                    </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal fade" id="modalpcs" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titulomodal"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Compañía actual: <b><span id="modalcact">  </span></b></p>
+        <p>Tiempo desde portabilidad: <b><span id="modalt"></span></b></p>
+        <p>Fecha de portabilidad: <b><span id="modalf"></span></b></p>
+        <p>Compañía anterior: <b><span id="modalcant"></span></b></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+             
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="Gesti%C3%B3n_files/jquery-3.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="Gesti%C3%B3n_files/popper.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="Gesti%C3%B3n_files/bootstrap.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="Gesti%C3%B3n_files/moment.js"></script>
+    <script type="text/javascript" src="Gesti%C3%B3n_files/daterangepicker.js"></script>
+    <script type="text/javascript" src="Gesti%C3%B3n_files/ajax_buscar.js"></script>
+    <script type="text/javascript" src="Gesti%C3%B3n_files/ajax_reporte.js"></script>
+    <script type="text/javascript" src="Gesti%C3%B3n_files/ajax_postregistro.js"></script>
+    <script type="text/javascript" src="Gesti%C3%B3n_files/ajax_cambiarpass.js"></script>
+    <script src="Gesti%C3%B3n_files/xlsx.js" lang="javascript"></script>
+    <script src="Gesti%C3%B3n_files/FileSaver.js" lang="javascript"></script>
+    <script type="text/javascript" src="Gesti%C3%B3n_files/js" async="" defer"=""></script>
+<script>
+function initMap() {
+   var input = document.getElementById('direccion_entrega');
+   var autocomplete = new google.maps.places.Autocomplete(input);
+   autocomplete.addListener('place_changed', function() {
+       var place = autocomplete.getPlace();
+       //document.getElementById('location-snap').
+       //innerHTML = place.formatted_address;  
+       //document.getElementById('lat-span').
+       //innerHTML = place.geometry.location.lat();
+       //document.getElementById('lon-span').
+       //innerHTML = place.geometry.location.lng();
+   });
+}
+</script>
+  
+    <script>
+        $('input[name="fechas_busqueda"]').daterangepicker();
+        $('input[name="fechas_reporte"]').daterangepicker();
+
+
+    </script><div class="daterangepicker ltr show-calendar opensright"><div class="ranges"></div><div class="drp-calendar left"><div class="calendar-table"></div><div class="calendar-time" style="display: none;"></div></div><div class="drp-calendar right"><div class="calendar-table"></div><div class="calendar-time" style="display: none;"></div></div><div class="drp-buttons"><span class="drp-selected"></span><button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button><button class="applyBtn btn btn-sm btn-primary" disabled="disabled" type="button">Apply</button> </div></div><div class="daterangepicker ltr show-calendar opensright"><div class="ranges"></div><div class="drp-calendar left"><div class="calendar-table"></div><div class="calendar-time" style="display: none;"></div></div><div class="drp-calendar right"><div class="calendar-table"></div><div class="calendar-time" style="display: none;"></div></div><div class="drp-buttons"><span class="drp-selected"></span><button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button><button class="applyBtn btn btn-sm btn-primary" disabled="disabled" type="button">Apply</button> </div></div>
+    <script>
+        function exportar(){
+            var today = new Date();
+            var dd = today.getDate();
+
+            var mm = today.getMonth()+1; 
+            var yyyy = today.getFullYear();
+            if(dd<10) 
+            {
+                dd='0'+dd;
+            } 
+
+            if(mm<10) 
+            {
+                mm='0'+mm;
+            } 
+            var fecha = dd + '-' + mm + '-' + yyyy;0
+
+
+
+            var wb = XLSX.utils.table_to_book(document.getElementById("tabla_reporte"),{sheet:"REPORTE",raw:true});
+
+            var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary', cellDates:true});
+            function s2ab(s) {
+                            var buf = new ArrayBuffer(s.length);
+                            var view = new Uint8Array(buf);
+                            for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                            return buf;
+            }
+            /*$("#btn_exportar").click(function(){
+                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'reporte'+fecha+'.xlsx');
+                });*/
+            saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'reporte'+fecha+'.xlsx');
+        }
+       
+    </script>
+    <script>
+        let dropdown = $('#region');
+
+dropdown.empty();
+
+dropdown.append('<option selected="true" disabled>Seleccione</option>');
+dropdown.prop('selectedIndex', 0);
+
+const url ='regiones.json';
+const zonas = "zonarm.json";
+
+// Populate dropdown with list of provinces
+$.getJSON(url, function (data) {
+  $.each(data, function (key, entry) {
+    $.each(entry, function (key, entry) {
+        dropdown.append($('<option></option>').attr('value', entry.region).text(entry.region));
+    })
+      
+    
+  })
+
+
+});
+
+let comuna = $('#comuna');
+comuna.empty();
+
+comuna.append('<option selected="true" disabled>Seleccione</option>');
+comuna.prop('selectedIndex', 0);
+
+dropdown.change(function(){
+    comuna.empty();
+    $.getJSON(url, function (data) {
+  $.each(data, function (key, entry) {
+    $.each(entry, function (key, entry) {
+       if(dropdown.val() == entry.region){
+           entry.comunas.forEach(function(item){
+            comuna.append($('<option ></option>').attr('value', item).text(item));
+           })
+       }
+    })
+      
+    
+  })
+
+
+});
+});
+
+let zona = $("#zona_rm");
+zona.append('<option selected="true" value="N/A" ></option>');
+zona.prop('selectedIndex', 0);
+
+comuna.change(function(){
+    zona.empty();
+    $.getJSON(zonas, function (data) {
+  $.each(data, function (key, entry) {
+    $.each(entry, function (key, entry) {                
+        entry.comunas.forEach(function(item){
+            if(item == comuna.val()){
+                 zona.append($('<option selected="true" > </option>').attr('value', entry.zona).text(entry.zona));
+            }
+           })
+    })
+      
+    
+  })
+
+
+});
+
+});
+
+let equipos = $("#modelo_equipo");
+equipos.empty();
+
+equipos.append('<option selected="true" value="" >Seleccione</option>');
+equipos.append('<option value="Equipo porpio >Equipo propio</option>');
+
+
+equipos.prop('selectedIndex', 0);
+
+const equipo = "../gestiongenerallider/inventario_equipos.json";
+
+$.getJSON(equipo, function (data) {
+  $.each(data, function (key, entry) {
+
+    $.each(entry, function(key,entry){
+        equipos.append($('<option></option>').attr('value', entry).text(entry));
+    });
+
+    
+  });
+});
+ 
+
+</script>
+<script>
+  var Fn = {
+    // Valida el rut con su cadena completa "XXXXXXXX-X"
+    validaRut : function (rutCompleto) {
+        rutCompleto = rutCompleto.replace("‐","-");
+        if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+            return false;
+        var tmp     = rutCompleto.split('-');
+        var digv    = tmp[1]; 
+        var rut     = tmp[0];
+        if ( digv == 'K' ) digv = 'k' ;
+        
+        return (Fn.dv(rut) == digv );
+    },
+    dv : function(T){
+        var M=0,S=1;
+        for(;T;T=Math.floor(T/10))
+            S=(S+T%10*(9-M++%6))%11;
+        return S?S-1:'k';
+    }
+}
+
+
+
+    $("#rut").change(function(){
+        if($("#rut").val().length > 6 ){
+            $("#dv").change(function(){
+
+                 var rut = $("#rut").val().concat("-",$("#dv").val()); 
+                 
+                if(Fn.validaRut(rut)){
+                   
+                }else{ alert("Rut o dígito verificador incorrecto");}
+            });
+        };
+    })  ;      
+
+</script>
+<script>
+    function r(){
+        document.getElementById("registro").reset();
+    }
+</script>
+<script>
+    
+        $("#pcs_migrar").change(function(){
+            if($("#pcs_migrar").val().length == 11){
+                
+
+                var request
+                var dato = {"numero" : $("#pcs_migrar").val() }
+
+                request = $.ajax({
+                    url: "consultarnumero.php",
+                    type: "post",
+                    data: dato
+                });
+                request.done(function (response, textStatus, jqXHR){
+                    // Log a message to the console
+                    //console.log("Hooray, it worked!");
+                    //alert("Registro ingresado");
+                    var d = JSON.parse(response)
+                    //console.log(d["SI_PORTADO"]);
+
+                    if(d["SI_PORTADO"] != undefined){
+                        console.log(d["SI_PORTADO"]);
+
+                        var fechaport =  d["SI_PORTADO"][0]["FILENAME"].substring(4,12) ;
+
+                        var ffp = fechaport.substring(0,4) + "/" + fechaport.substring(4,6) + "/" + fechaport.substring(6,8);
+                        var fp = new Date(ffp);
+
+                        var hoy = new Date();
+
+                        var tiempo = hoy.getTime() - fp.getTime();
+                        var contdias = Math.floor(tiempo/(1000*60*60*24*30.4));
+                        
+
+                        document.getElementById("titulomodal").innerHTML = "PORTADO";
+                        document.getElementById("modalcact").innerHTML = d["SI_PORTADO"][0]["CONCESIONARIA"];
+                        document.getElementById("modalt").innerHTML = contdias + " meses";
+                        document.getElementById("modalf").innerHTML = ffp;
+                        document.getElementById("modalcant").innerHTML = d["SI_PORTADO"][0]["Compania"];
+
+                        $("#modalpcs").modal("show");
+
+
+
+
+
+
+
+
+                    }else if(d["NO_PORTADO"] != undefined){
+                        //console.log(d["NO_PORTADO"]);
+                        document.getElementById("titulomodal").innerHTML = "NO PORTADO";
+                        document.getElementById("modalcact").innerHTML = d["NO_PORTADO"][0]["Compania"];
+                        document.getElementById("modalt").innerHTML = "No aplica";
+                        document.getElementById("modalf").innerHTML = "No aplica";
+                        document.getElementById("modalcant").innerHTML = "No aplica";
+
+                        $("#modalpcs").modal("show");
+
+
+                        
+
+
+                    }else if(d["NO_EXISTE"] != undefined){
+                        console.log(d["NO_EXISTE"]);
+                        alert("Número no existe");
+
+                    }
+
+
+
+                   
+
+                });
+            
+                // Callback handler that will be called on failure
+                request.fail(function (jqXHR, textStatus, errorThrown){
+                    // Log the error to the console
+                    //console.error(
+                    //    "The following error occurred: "+
+                    //    textStatus, errorThrown
+                    //);
+                    //alert("No se pudo ingresar el registro");
+                });
+            }
+            });
+    
+       
+    </script>
+    <script>
+        $("#producto_ofrecido").change(function(){
+            if($("#producto_ofrecido").val() == "Primera Línea" ){
+                document.getElementById("pcs_migrar").value = "56900000000";
+                document.getElementById("pcs_migrar").readOnly = true;
+
+                
+            }else{
+                document.getElementById("pcs_migrar").value = "";
+                document.getElementById("pcs_migrar").readOnly = false;
+
+            }
+        });
+    </script>
+     <script type="text/javascript">
+
+$(document).ready(function() {
+    
+    var request_update
+    var value
+
+
+    $("#grupo_solicitud" ).change(function() {
+
+        value = $("select#grupo_solicitud" ).val() ;
+
+        
+    });
+
+
+    
+
+    function update(){
+        
+ 
+    request_update = $.ajax({
+    url: "obtenerruta.php",
+    type: "post",
+    data: null
+});
+
+// Callback handler that will be called on success
+request_update.done(function (response, textStatus, jqXHR){
+    // Log a message to the console
+    //console.log("Hooray, it worked!");
+    //alert("Registro ingresado");
+    console.log(response);
+
+    document.getElementById("tabla_ruta").innerHTML = response;
+   
+});
+
+// Callback handler that will be called on failure
+request_update.fail(function (jqXHR, textStatus, errorThrown){
+    // Log the error to the console
+    //console.error(
+    //    "The following error occurred: "+
+    //    textStatus, errorThrown
+    //);
+     //alert("No se pudo ingresar el registro");
+});
+
+    }
+ 
+    setInterval(update, 1000);
+});
+</script>
+    
+   
+  
+<div class="pac-container pac-logo" style="display: none; width: 256px; position: absolute; left: 1043px; top: 494px;"></div></body></html>
